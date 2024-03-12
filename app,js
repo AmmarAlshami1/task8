@@ -1,0 +1,67 @@
+/// Superclass
+class Vehicle {
+    constructor(make, model, year) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+    }
+
+// this function for drive vehicle
+    drive() {
+        console.log("the vehicle is runing");
+    }
+
+// this function for print Details for vehicle
+    printDetails() {
+        console.log(`Make: ${this.make}, Model: ${this.model}, Year: ${this.year}`);
+    }
+}
+
+/// Subclass - Car
+class Car extends Vehicle {
+    constructor(make, model, year, fuelType) {
+        super(make, model, year);
+        this.fuelType = fuelType;
+    }
+
+// this function for drive vehicle
+    drive() {
+        console.log(`The ${this.make} ${this.model} is driving!`);
+    }
+
+// this function for horn vehicle
+    honk() {
+        console.log("Beep Beep!");
+    }
+}
+
+// Subclass - ElectricCar
+class ElectricCar extends Car {
+    constructor(make, model, year, range) {
+        super(make, model, year, "Electric");
+        this.range = range; // Range in miles
+    }
+
+// this function for charge electric Cars 
+    charge() {
+        console.log(`Charging the ${this.make} ${this.model}...`);
+    }
+
+// this function for drive vehicle
+    drive() {
+        console.log(`The ${this.make} ${this.model} with ${this.range} miles range is driving silently!`);
+    }
+}
+
+// obj of class
+const car1 = new Car("Toyota", "Camry", 2022, "Petrol");
+const electricCar1 = new ElectricCar("Tesla", "Model S", 2023, 400);
+
+// Array of vehicles
+const vehicles = [car1, electricCar1];
+
+
+for (let i = 0; i < vehicles.length; i++) {
+    vehicles[i].drive();
+    vehicles[i].printDetails();
+}
